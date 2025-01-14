@@ -15,10 +15,10 @@ public class PlayerCar : MonoBehaviour
     void Update()
     {
         // 기본 움직임 (좌우, 상하)
-        float steerAmount = Input.GetAxis("Horizontal") * steerSpeed; // 좌우 무빙 키보드 입력
-        float moveAmount = Input.GetAxis("Vertical") * moveSpeed; // 상하
+        float steerAmount = Input.GetAxis("Horizontal") * steerSpeed * Time.deltaTime; // 좌우 무빙 키보드 입력
+        float moveAmount = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime; // 상하
 
-        transform.Rotate(0, 0, steerAmount);
+        transform.Rotate(0, 0, -steerAmount); // steering 조향각 조정
         transform.Translate(0, moveAmount, 0);
 
     }
