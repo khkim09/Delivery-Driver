@@ -175,11 +175,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c3c7536fe74a0d409bcb47153ad6ad0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  steerSpeed: 300
-  moveSpeed: 8
+  steerSpeed: 250
+  moveSpeed: 10
   boost: 20
   brake: 0.2
   steerAmount: 0
   moveAmount: 0
+  mainCamera: {fileID: 0}
   driverRigidbody: {fileID: 4808506310741559326}
   driverCollider: {fileID: 8515615242288939946}

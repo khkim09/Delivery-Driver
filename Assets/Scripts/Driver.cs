@@ -11,11 +11,23 @@ public class Driver : MonoBehaviour
     [SerializeField] private float moveAmount;
 
     [Header("References")]
+    [SerializeField] private Camera mainCamera;
     [SerializeField] private Rigidbody2D driverRigidbody;
     [SerializeField] private Collider2D driverCollider;
 
+    void Start()
+    {
+        if (mainCamera == null)
+        {
+            mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        }
+    }
+
     void Update()
     {
+        // 카메라 따라 움직임
+        mainCamera.transform.position = this.transform.position + new Vector3(0, 0, -30);
+        
         // 기본 움직임 (좌우, 상하)
         steerAmount = Input.GetAxis("Horizontal") * steerSpeed * Time.deltaTime; // 좌우 무빙 키보드 입력
         moveAmount = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime; // 상하
