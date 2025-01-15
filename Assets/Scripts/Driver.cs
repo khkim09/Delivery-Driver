@@ -19,7 +19,7 @@ public class Driver : MonoBehaviour
     {
         if (mainCamera == null)
         {
-            mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+            mainCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>(); // 카메라 할당
         }
     }
 
@@ -27,7 +27,7 @@ public class Driver : MonoBehaviour
     {
         // 카메라 따라 움직임
         mainCamera.transform.position = this.transform.position + new Vector3(0, 0, -30);
-        
+
         // 기본 움직임 (좌우, 상하)
         steerAmount = Input.GetAxis("Horizontal") * steerSpeed * Time.deltaTime; // 좌우 무빙 키보드 입력
         moveAmount = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime; // 상하

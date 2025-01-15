@@ -4081,7 +4081,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -50}
+  m_LocalPosition: {x: 0, y: 0, z: -60}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7020,7 +7020,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &841190628
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14612,9 +14612,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Car 2_0
       objectReference: {fileID: 0}
+    - target: {fileID: 4497190432779842889, guid: 115899b52ee68db45ba26e2c22cb7992, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7156422805099279763, guid: 115899b52ee68db45ba26e2c22cb7992, type: 3}
       propertyPath: moveSpeed
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7156422805099279763, guid: 115899b52ee68db45ba26e2c22cb7992, type: 3}
       propertyPath: mainCamera
@@ -14634,7 +14638,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8739889056593410210, guid: 115899b52ee68db45ba26e2c22cb7992, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -20
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 8739889056593410210, guid: 115899b52ee68db45ba26e2c22cb7992, type: 3}
       propertyPath: m_LocalRotation.w
@@ -15826,7 +15830,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &2144287574
 SpriteRenderer:
   m_ObjectHideFlags: 0
