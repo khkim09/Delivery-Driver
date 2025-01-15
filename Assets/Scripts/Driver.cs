@@ -23,11 +23,14 @@ public class Driver : MonoBehaviour
         }
     }
 
-    void Update()
+    void LateUpdate()
     {
         // 카메라 따라 움직임
         mainCamera.transform.position = this.transform.position + new Vector3(0, 0, -30);
+    }
 
+    void Update()
+    {
         // 기본 움직임 (좌우, 상하)
         steerAmount = Input.GetAxis("Horizontal") * steerSpeed * Time.deltaTime; // 좌우 무빙 키보드 입력
         moveAmount = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime; // 상하
@@ -42,10 +45,10 @@ public class Driver : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D collider) {
-        if (collider.tag == "Boost")
+        if (collider.tag == "Package")
         {
-            Debug.Log("통과");
-            driverRigidbody.AddForce(new Vector3(0, moveAmount * boost, -steerAmount), ForceMode2D.Impulse);
+            Destroy(collider.gameObject);
+            Debug.Log("배달 시작");
         }
     }
 }
