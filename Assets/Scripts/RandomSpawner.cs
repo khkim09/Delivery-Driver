@@ -3,7 +3,7 @@ using UnityEngine;
 public class RandomSpawner : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] private Vector3[] customerSpawn =
+    [SerializeField] private Vector3[] spawnLocation =
     { 
         new Vector3(-44f, -3.5f, 0f),
         new Vector3(-43.5f, -21f, 0f),
@@ -43,7 +43,12 @@ public class RandomSpawner : MonoBehaviour
         new Vector3(33.76f, -17.11f, 0f),
         new Vector3(39.7f, 10.51f, 0f)
     };
-    [SerializeField] private int customerIndex = 0;
+    [SerializeField] private int packageIndex;
+    [SerializeField] private int customerIndex;
+
+    [Header("References")]
+    [SerializeField] private GameObject package;
+    [SerializeField] private GameObject customer;
 
     void Start()
     {
@@ -52,11 +57,15 @@ public class RandomSpawner : MonoBehaviour
     
     void Spawn()
     {
-        if (customerIndex == customerSpawn.Length)
-            customerIndex = 0;
-        this.transform.position = customerSpawn[customerIndex];
-        customerIndex++;
-        
+        customerIndex = Random.Range(0, spawnLocation.Length);
+        packageIndex = Random.Range(0, spawnLocation.Length);
+
+        if (customerIndex == packageIndex)
+            Invoke("Spawn", 0f);
+
+        package.transform.position = spawnLocation[packageIndex];
+        customer.transform.position = spawnLocation[customerIndex];
+
         Invoke("Spawn", 0.2f);
     }
 }
