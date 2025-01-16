@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private RandomSpawner deliverySpawner;
+    [SerializeField] private GameObject newDeliveryUI;
 
     void Awake()
     {
@@ -39,12 +40,14 @@ public class GameManager : MonoBehaviour
         else if (gameState == GameState.isDelivering && !hasPackage)
         {
             gameState = GameState.hasCompleted;
+            newDeliveryUI.SetActive(true);
         }
-        else if (gameState == GameState.hasCompleted)
+        else if (gameState == GameState.hasCompleted && Input.GetKeyDown(KeyCode.Space))
         {
-            deliverySpawner.Spawn();
-
             gameState = GameState.none;
+            newDeliveryUI.SetActive(false);
+            
+            deliverySpawner.Spawn();
         }
     }
 }

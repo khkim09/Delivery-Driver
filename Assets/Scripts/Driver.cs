@@ -49,7 +49,6 @@ public class Driver : MonoBehaviour
     void StartDeliver()
     {
         GameManager.GM.hasPackage = true;
-        
         Debug.Log("배달 시작");
     }
 
