@@ -11,23 +11,8 @@ public class Driver : MonoBehaviour
     [SerializeField] private float moveAmount;
 
     [Header("References")]
-    [SerializeField] private Camera mainCamera;
     [SerializeField] private Rigidbody2D driverRigidbody;
     [SerializeField] private Collider2D driverCollider;
-
-    void Start()
-    {
-        if (mainCamera == null)
-        {
-            mainCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>(); // 카메라 할당
-        }
-    }
-
-    void LateUpdate()
-    {
-        // 카메라 따라 움직임
-        mainCamera.transform.position = this.transform.position + new Vector3(0, 0, -30);
-    }
 
     void Update()
     {
