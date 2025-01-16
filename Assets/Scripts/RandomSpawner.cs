@@ -47,25 +47,33 @@ public class RandomSpawner : MonoBehaviour
     [SerializeField] private int customerIndex;
 
     [Header("References")]
-    [SerializeField] private GameObject package;
-    [SerializeField] private GameObject customer;
+    [SerializeField] private GameObject packagePrefab;
+    [SerializeField] private GameObject customerPrefab;
+    [SerializeField] private GameObject currentPackage;
+    [SerializeField] private GameObject currentCustomer;
 
-    void Start()
+    void Awake()
     {
         Invoke("Spawn", 0.2f);
     }
-    
-    void Spawn()
+
+    public void Spawn()
     {
         customerIndex = Random.Range(0, spawnLocation.Length);
         packageIndex = Random.Range(0, spawnLocation.Length);
 
         if (customerIndex == packageIndex)
+        {
             Invoke("Spawn", 0f);
+            return;
+        }
 
-        package.transform.position = spawnLocation[packageIndex];
-        customer.transform.position = spawnLocation[customerIndex];
+        if (currentPackage != null)
+            Destroy(currentPackage);
+        if (currentCustomer != null)
+            Destroy(currentCustomer);
 
-        Invoke("Spawn", 0.2f);
+        currentPackage = Instantiate(packagePrefab, spawnLocation[packageIndex], Quaternion.identity);
+        currentCustomer = Instantiate(customerPrefab, spawnLocation[customerIndex], Quaternion.identity);
     }
 }

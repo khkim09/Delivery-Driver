@@ -38,17 +38,39 @@ public class Driver : MonoBehaviour
         transform.Rotate(0, 0, -steerAmount); // steering 조향각 조정
         transform.Translate(0, moveAmount, 0);
 
-    }
-
-    void OnCollisionEnter2D(Collision2D collision) {
         
     }
 
-    void OnTriggerEnter2D(Collider2D collider) {
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+    }
+
+    void StartDeliver()
+    {
+        GameManager.GM.hasPackage = true;
+        
+        Debug.Log("배달 시작");
+    }
+
+    void CompleteDeliver()
+    {
+        GameManager.GM.hasPackage = false;
+        Debug.Log("배달 완료");
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
         if (collider.tag == "Package")
         {
             Destroy(collider.gameObject);
-            Debug.Log("배달 시작");
+            StartDeliver();
+        }
+
+        if (collider.tag == "Customer" && GameManager.GM.hasPackage)
+        {
+            Destroy(collider.gameObject);
+            CompleteDeliver();
         }
     }
 }
