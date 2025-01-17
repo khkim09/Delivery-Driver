@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public enum GameState
 {
@@ -14,13 +16,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameState gameState;
     [SerializeField] public bool hasPackage;
     [SerializeField] private bool isMinimapOpened;
+    [SerializeField] public int lives = 3;
 
     [Header("References")]
     [SerializeField] public GameObject mainCamera;
     [SerializeField] public GameObject minimapCamera;
     [SerializeField] public GameObject driver;
     [SerializeField] public RandomSpawner deliverySpawner;
-    [SerializeField] public GameObject newDeliveryUI;
+    [SerializeField] public GameObject deliveringUI;
+    [SerializeField] public GameObject deliveryCompletedUI;
+    [SerializeField] public GameObject deliveryFailedUI;
 
     void Awake()
     {
@@ -63,20 +68,38 @@ public class GameManager : MonoBehaviour
                 isMinimapOpened = false;
             }
         }
+
+        void CheckRestart()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                SceneManager.LoadScene("main");
+                deliveryFailedUI.SetActive(false);
+            }
+        }
         
         if (gameState == GameState.none && hasPackage)
         {
             gameState = GameState.isDelivering;
+            deliveringUI.SetActive(true);
+        }
+        else if (gameState == GameState.isDelivering && lives <= 0)
+        {
+            gameState = GameState.none;
+            deliveryFailedUI.SetActive(true);
+            CheckRestart();
         }
         else if (gameState == GameState.isDelivering && !hasPackage)
         {
             gameState = GameState.hasCompleted;
-            newDeliveryUI.SetActive(true);
+            deliveringUI.SetActive(false);
+            deliveryCompletedUI.SetActive(true);
+            lives = 3;
         }
         else if (gameState == GameState.hasCompleted && Input.GetKeyDown(KeyCode.Space))
         {
             gameState = GameState.none;
-            newDeliveryUI.SetActive(false);
+            deliveryCompletedUI.SetActive(false);
 
             deliverySpawner.Spawn();
         }

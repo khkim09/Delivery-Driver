@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Driver : MonoBehaviour
@@ -28,7 +29,10 @@ public class Driver : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        if (GameManager.GM.gameState == GameState.isDelivering && collision.gameObject.tag == "Obstacle")
+        {
+            GameManager.GM.lives--;
+        }
     }
 
     void StartDeliver()
