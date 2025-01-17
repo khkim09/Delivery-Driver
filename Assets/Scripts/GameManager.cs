@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameObject mainCamera;
     [SerializeField] public GameObject minimapCamera;
     [SerializeField] private GameObject driver;
-    [SerializeField] private RandomSpawner deliverySpawner;
+    [SerializeField] public RandomSpawner deliverySpawner;
     [SerializeField] private GameObject deliveryStartUI;
     [SerializeField] private GameObject deliveringUI;
     [SerializeField] private GameObject deliveryCompletedUI;
