@@ -3,8 +3,10 @@ using UnityEngine;
 public class Glitter : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] private float blinkSpeed = 1.5f;
-    [SerializeField] private float brightnessMultiplier = 1.5f;
+    [SerializeField] private float blinkSpeed;
+    [SerializeField] private float brightnessMultiplier;
+    [SerializeField] private float minBrightness;
+    [SerializeField] private float localTime;
 
     [Header("References")]
     [SerializeField] private GameObject package;
@@ -26,24 +28,29 @@ public class Glitter : MonoBehaviour
 
         packageOriginalColor = packageRenderer.color;
         customerOriginalColor = customerRenderer.color;
+
+        localTime = 0f;
     }
 
     void Update()
     {
         if (GameManager.GM.minimapCamera.activeInHierarchy)
         {
+            localTime += Time.deltaTime * blinkSpeed;
+
+            float brightness = Mathf.PingPong(localTime, 1.0f) * brightnessMultiplier;
+            brightness = Mathf.Max(brightness, minBrightness);
+
             if (packageRenderer != null)
             {
-                float packageBrightness = Mathf.PingPong(Time.time * blinkSpeed, 1.0f) * brightnessMultiplier; // 밝기 조절
-                Color packageBrightColor = packageOriginalColor * packageBrightness; // 원래 색상에 밝기 배율 적용
+                Color packageBrightColor = packageOriginalColor * brightness; // 원래 색상에 밝기 배율 적용
                 packageBrightColor.a = packageOriginalColor.a; // 투명도는 유지
                 packageRenderer.color = packageBrightColor;
             }
             
             if (customerRenderer != null)
             {
-                float customerBrightness = Mathf.PingPong(Time.time * blinkSpeed, 1.0f) * brightnessMultiplier; // 밝기 조절
-                Color customerBrightColor = customerOriginalColor * customerBrightness; // 원래 색상에 밝기 배율 적용
+                Color customerBrightColor = customerOriginalColor * brightness; // 원래 색상에 밝기 배율 적용
                 customerBrightColor.a = customerOriginalColor.a; // 투명도는 유지
                 customerRenderer.color = customerBrightColor;
             }
@@ -54,6 +61,8 @@ public class Glitter : MonoBehaviour
                 packageRenderer.color = packageOriginalColor; // 원래 색상 복구
             if (customerRenderer != null)
                 customerRenderer.color = customerOriginalColor;
+
+            localTime = 0f;
         }
     }
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2284021153815676465}
   - component: {fileID: 1601366221380138783}
   - component: {fileID: 25663462916319804}
-  - component: {fileID: -2687371388580945937}
+  - component: {fileID: -4267083289190237077}
   m_Layer: 0
   m_Name: Package
   m_TagString: Package
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.2383855, g: 0.2028302, b: 1, a: 1}
+  m_Color: {r: 0.36095488, g: 0.3317462, b: 0.990566, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -135,7 +135,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.0299771, y: 1.0337241}
   m_EdgeRadius: 0
---- !u!114 &-2687371388580945937
+--- !u!114 &-4267083289190237077
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,7 +148,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blinkSpeed: 1.5
-  brightnessMultiplier: 3
+  brightnessMultiplier: 5
+  minBrightness: 0.5
+  localTime: 0
   package: {fileID: 9022660148439144664}
   customer: {fileID: 5017019779091321559, guid: 465eada5ac9eb1e41b047809a324a2c6, type: 3}
   packageRenderer: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1404925870581853787}
   - component: {fileID: 9145428219581709794}
   - component: {fileID: 3671384210230127375}
-  - component: {fileID: 5820054381203388171}
+  - component: {fileID: -4720543110707925815}
   m_Layer: 0
   m_Name: Customer
   m_TagString: Customer
@@ -135,7 +135,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.0299771, y: 1.0337241}
   m_EdgeRadius: 0
---- !u!114 &5820054381203388171
+--- !u!114 &-4720543110707925815
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,7 +148,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blinkSpeed: 1.5
-  brightnessMultiplier: 3
+  brightnessMultiplier: 5
+  minBrightness: 0.5
+  localTime: 0
   package: {fileID: 9022660148439144664, guid: 429ccc36128682a48a860941d96dbccf, type: 3}
   customer: {fileID: 5017019779091321559}
   packageRenderer: {fileID: 0}
