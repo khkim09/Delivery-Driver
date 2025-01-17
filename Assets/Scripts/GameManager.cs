@@ -21,11 +21,12 @@ public class GameManager : MonoBehaviour
     [Header("References")]
     [SerializeField] public GameObject mainCamera;
     [SerializeField] public GameObject minimapCamera;
-    [SerializeField] public GameObject driver;
-    [SerializeField] public RandomSpawner deliverySpawner;
-    [SerializeField] public GameObject deliveringUI;
-    [SerializeField] public GameObject deliveryCompletedUI;
-    [SerializeField] public GameObject deliveryFailedUI;
+    [SerializeField] private GameObject driver;
+    [SerializeField] private RandomSpawner deliverySpawner;
+    [SerializeField] private GameObject deliveryStartUI;
+    [SerializeField] private GameObject deliveringUI;
+    [SerializeField] private GameObject deliveryCompletedUI;
+    [SerializeField] private GameObject deliveryFailedUI;
 
     void Awake()
     {
@@ -51,6 +52,11 @@ public class GameManager : MonoBehaviour
     void LateUpdate()
     {
         mainCamera.transform.position = driver.transform.position + new Vector3(0, 0, -30f);
+    }
+
+    void UIDisable()
+    {
+        deliveryStartUI.SetActive(false);
     }
 
     void Update()
@@ -81,6 +87,8 @@ public class GameManager : MonoBehaviour
         if (gameState == GameState.none && hasPackage)
         {
             gameState = GameState.isDelivering;
+            deliveryStartUI.SetActive(true);
+            Invoke("UIDisable", 1.0f);
             deliveringUI.SetActive(true);
         }
         else if (gameState == GameState.isDelivering && lives <= 0)
