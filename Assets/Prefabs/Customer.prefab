@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1404925870581853787}
   - component: {fileID: 9145428219581709794}
   - component: {fileID: 3671384210230127375}
+  - component: {fileID: 5820054381203388171}
   m_Layer: 0
   m_Name: Customer
   m_TagString: Customer
@@ -134,3 +135,23 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.0299771, y: 1.0337241}
   m_EdgeRadius: 0
+--- !u!114 &5820054381203388171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5017019779091321559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 776ae9060245b6b4fae8bd63ac7d7a70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blinkSpeed: 1.5
+  brightnessMultiplier: 1.5
+  package: {fileID: 9022660148439144664, guid: 429ccc36128682a48a860941d96dbccf, type: 3}
+  customer: {fileID: 5017019779091321559}
+  packageRenderer: {fileID: 0}
+  customerRenderer: {fileID: 0}
+  packageOriginalColor: {r: 0, g: 0, b: 0, a: 0}
+  customerOriginalColor: {r: 0, g: 0, b: 0, a: 0}

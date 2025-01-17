@@ -1453,8 +1453,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameState: 0
   hasPackage: 0
-  mainCamera: {fileID: 519420031}
-  minimapCamera: {fileID: 853960759}
+  isMinimapOpened: 0
+  mainCamera: {fileID: 519420028}
+  minimapCamera: {fileID: 853960756}
   driver: {fileID: 702394429}
   deliverySpawner: {fileID: 1651991398}
   newDeliveryUI: {fileID: 1433961332}
@@ -7359,6 +7360,7 @@ GameObject:
   - component: {fileID: 853960760}
   - component: {fileID: 853960759}
   - component: {fileID: 853960757}
+  - component: {fileID: 853960761}
   m_Layer: 0
   m_Name: Minimap Camera
   m_TagString: MinimapCamera
@@ -7476,6 +7478,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &853960761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853960756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 776ae9060245b6b4fae8bd63ac7d7a70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blinkSpeed: 1.5
+  brightnessMultiplier: 1.5
+  package: {fileID: 0}
+  customer: {fileID: 0}
+  packageRenderer: {fileID: 0}
+  customerRenderer: {fileID: 0}
+  packageOriginalColor: {r: 0, g: 0, b: 0, a: 0}
+  customerOriginalColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &862900946
 PrefabInstance:
   m_ObjectHideFlags: 0

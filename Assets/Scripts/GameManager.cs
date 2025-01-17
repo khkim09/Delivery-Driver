@@ -17,10 +17,10 @@ public class GameManager : MonoBehaviour
 
     [Header("References")]
     [SerializeField] public GameObject mainCamera;
-    [SerializeField] private GameObject minimapCamera;
-    [SerializeField] private GameObject driver;
-    [SerializeField] private RandomSpawner deliverySpawner;
-    [SerializeField] private GameObject newDeliveryUI;
+    [SerializeField] public GameObject minimapCamera;
+    [SerializeField] public GameObject driver;
+    [SerializeField] public RandomSpawner deliverySpawner;
+    [SerializeField] public GameObject newDeliveryUI;
 
     void Awake()
     {

@@ -49,8 +49,8 @@ public class RandomSpawner : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject packagePrefab;
     [SerializeField] private GameObject customerPrefab;
-    [SerializeField] private GameObject currentPackage;
-    [SerializeField] private GameObject currentCustomer;
+    [SerializeField] public GameObject currentPackage;
+    [SerializeField] public GameObject currentCustomer;
 
     void Awake()
     {
