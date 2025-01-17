@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blinkSpeed: 1.5
-  brightnessMultiplier: 1.5
+  brightnessMultiplier: 3
   package: {fileID: 9022660148439144664}
   customer: {fileID: 5017019779091321559, guid: 465eada5ac9eb1e41b047809a324a2c6, type: 3}
   packageRenderer: {fileID: 0}
