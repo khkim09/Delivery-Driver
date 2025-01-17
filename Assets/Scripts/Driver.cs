@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Driver : MonoBehaviour
@@ -23,8 +22,6 @@ public class Driver : MonoBehaviour
 
         transform.Rotate(0, 0, -steerAmount); // steering 조향각 조정
         transform.Translate(0, moveAmount, 0);
-
-        
     }
 
     void OnCollisionEnter2D(Collision2D collision)
