@@ -6,7 +6,8 @@ public enum GameState
 {
     none,
     isDelivering,
-    hasCompleted
+    hasCompleted,
+    failed
 }
 
 public class GameManager : MonoBehaviour
@@ -74,15 +75,6 @@ public class GameManager : MonoBehaviour
                 isMinimapOpened = false;
             }
         }
-
-        void CheckRestart()
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                SceneManager.LoadScene("main");
-                deliveryFailedUI.SetActive(false);
-            }
-        }
         
         if (gameState == GameState.none && hasPackage)
         {
@@ -91,25 +83,34 @@ public class GameManager : MonoBehaviour
             Invoke("UIDisable", 1.0f);
             deliveringUI.SetActive(true);
         }
-        else if (gameState == GameState.isDelivering && lives <= 0)
+        
+        if (gameState == GameState.isDelivering && lives <= 0)
         {
-            gameState = GameState.none;
+            gameState = GameState.failed;
+            hasPackage = false;
             deliveryFailedUI.SetActive(true);
-            CheckRestart();
         }
-        else if (gameState == GameState.isDelivering && !hasPackage)
+        
+        if (gameState == GameState.isDelivering && !hasPackage)
         {
             gameState = GameState.hasCompleted;
             deliveringUI.SetActive(false);
             deliveryCompletedUI.SetActive(true);
             lives = 3;
         }
-        else if (gameState == GameState.hasCompleted && Input.GetKeyDown(KeyCode.Space))
+        
+        if (gameState == GameState.hasCompleted && Input.GetKeyDown(KeyCode.Space))
         {
             gameState = GameState.none;
             deliveryCompletedUI.SetActive(false);
 
             deliverySpawner.Spawn();
+        }
+
+        if (gameState == GameState.failed && Input.GetKeyDown(KeyCode.Space))
+        {
+            SceneManager.LoadScene("main");
+            // deliveryFailedUI.SetActive(false);
         }
     }
 }
