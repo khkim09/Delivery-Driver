@@ -5,8 +5,6 @@ public class Driver : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private float steerSpeed;
     [SerializeField] private float moveSpeed;
-    [SerializeField] private float boost;
-    [SerializeField] private float brake;
     [SerializeField] private float steerAmount;
     [SerializeField] private float moveAmount;
 

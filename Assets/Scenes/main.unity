@@ -17356,7 +17356,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4497190432779842889, guid: 115899b52ee68db45ba26e2c22cb7992, type: 3}
       propertyPath: m_Name
-      value: Car 2_0
+      value: Driver
       objectReference: {fileID: 0}
     - target: {fileID: 4497190432779842889, guid: 115899b52ee68db45ba26e2c22cb7992, type: 3}
       propertyPath: m_IsActive
